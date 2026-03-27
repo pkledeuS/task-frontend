@@ -51,3 +51,38 @@ export async function obtenerTareas() {
 
     return response.json()
 }
+
+export async function crearTarea (nombre: string, descripcion: string, fecha: string, hora: string, termino: boolean) {
+    const token = localStorage.getItem('token')
+    
+    const response = await fetch(`${API_URL}/tarea/`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({nombre_tarea: nombre, description: descripcion, fecha, hora, termino})
+    })
+        
+    if (!response.ok) {
+        throw new Error("Error al registrar la tarea")
+    }
+
+    return response.json()
+}
+
+export async function eliminarTarea (id: number) {
+    const token = localStorage.getItem('token');
+
+    const response = await fetch(`${API_URL}/tarea/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    if (!response.ok) {
+        throw new Error("Error al eliminar la tarea")
+    }
+
+    return response.json()
+}

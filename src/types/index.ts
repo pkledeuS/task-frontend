@@ -4,7 +4,7 @@ export interface Usuario {
 }
 
 export interface UsuarioResponse {
-    is: number
+    id: number
     email: string
     activo: boolean
 }

@@ -28,7 +28,7 @@ function Register() {
                 </div>
                 <div>
                     <form onSubmit={handleSubmit}>
-                        <label htmlFor="">
+                        <label>
                             Email:
                             <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                         </label>
