@@ -71,6 +71,25 @@ export async function crearTarea (nombre: string, descripcion: string, fecha: st
     return response.json()
 }
 
+export async function editarTarea (id: number, tareaActualizada: any){
+    const token = localStorage.getItem('token');
+
+    const response = await fetch (`${API_URL}/tarea/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(tareaActualizada)
+    })
+
+    if (!response.ok) {
+        throw new Error("Error al modificar la tarea")
+    }
+
+    return response.json();
+};
+
 export async function eliminarTarea (id: number) {
     const token = localStorage.getItem('token');
 
