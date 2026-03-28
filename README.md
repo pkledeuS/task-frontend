@@ -1,73 +1,61 @@
-# React + TypeScript + Vite
+# TaskFlow - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es el frontend de la aplicación TaskFlow, construido con **React**, **TypeScript** y **Vite**. La aplicación permite a los usuarios registrarse, iniciar sesión y gestionar sus tareas a través de un panel de control (Dashboard).
 
-Currently, two official plugins are available:
+Este proyecto consume la API backend `task-api` (basada en Python).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Características principales
 
-## React Compiler
+- **Autenticación de usuarios:** Flujo completo de Login y Registro.
+- **Rutas Protegidas:** Acceso restringido al Dashboard de tareas solo para usuarios autenticados.
+- **Desarrollo rápido:** Configurado con Vite para un Hot Module Replacement (HMR) ultrarrápido.
+- **Tipado estricto:** Desarrollado completamente en TypeScript para mayor seguridad y robustez en el código.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tecnologías utilizadas
 
-## Expanding the ESLint configuration
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Requisitos Previos
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Antes de comenzar, asegúrate de tener instalado:
+- [Node.js](https://nodejs.org/) (versión 16 o superior recomendada).
+- El backend `task-api` debe estar en ejecución para que las llamadas a la API (`services/api.ts`) funcionen correctamente.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Instalación y Configuración local
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. Instala las dependencias del proyecto:
+   ```bash
+   npm install
+   ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. (Opcional) Configura las variables de entorno si tu proyecto lo requiere (por ejemplo, creando un archivo `.env` basado en la URL de tu backend local).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+3. Inicia el servidor de desarrollo:
+   ```bash
+   npm run dev
+   ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+4. Abre tu navegador y navega a `http://localhost:5173` (o el puerto que te indique la consola) para ver la aplicación.
+
+## Scripts disponibles
+
+En el directorio del proyecto, puedes ejecutar:
+
+- `npm run dev`: Inicia el modo de desarrollo.
+- `npm run build`: Compila la aplicación para producción en la carpeta `dist`.
+- `npm run lint`: Ejecuta ESLint para analizar el código en busca de problemas.
+- `npm run preview`: Inicia un servidor web local para visualizar el build de producción generado.
+
+## Estructura principal del proyecto
+
+```text
+src/
+ ├── assets/      # Imágenes, iconos y otros recursos estáticos.
+ ├── components/  # Componentes reutilizables de UI (Navbar, ProtectedRoute).
+ ├── pages/       # Vistas principales de la aplicación (Home, Login, Register, Dashboard).
+ ├── services/    # Lógica de comunicación con el backend (api.ts).
+ ├── types/       # Definiciones de interfaces y tipos de TypeScript.
+ └── App.tsx      # Componente raíz y enrutador principal.
 ```
