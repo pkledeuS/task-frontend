@@ -4,18 +4,26 @@ Este es el frontend de la aplicación TaskFlow, construido con **React**, **Type
 
 Este proyecto consume la API backend `task-api` (basada en Python).
 
+## URL de Producción
+
+[https://task-frontend-eosin.vercel.app](https://task-frontend-eosin.vercel.app)
+
 ## Características principales
 
 - **Autenticación de usuarios:** Flujo completo de Login y Registro.
 - **Rutas Protegidas:** Acceso restringido al Dashboard de tareas solo para usuarios autenticados.
 - **Desarrollo rápido:** Configurado con Vite para un Hot Module Replacement (HMR) ultrarrápido.
 - **Tipado estricto:** Desarrollado completamente en TypeScript para mayor seguridad y robustez en el código.
+- **Despliegue ágil:** Desplegado en Vercel con variables de entorno por ambiente (development/production).
 
 ## Tecnologías utilizadas
 
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Router](https://reactrouter.com/)
+- Vercel (deployment)
 
 ## Requisitos Previos
 
@@ -30,7 +38,10 @@ Antes de comenzar, asegúrate de tener instalado:
    npm install
    ```
 
-2. (Opcional) Configura las variables de entorno si tu proyecto lo requiere (por ejemplo, creando un archivo `.env` basado en la URL de tu backend local).
+2. Configura las variables de entorno. Crea un archivo `.env` en la raíz del proyecto agregando la URL de la API:
+   ```env
+   VITE_API_URL=http://127.0.0.1:8000
+   ```
 
 3. Inicia el servidor de desarrollo:
    ```bash
